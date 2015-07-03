@@ -9,9 +9,11 @@ namespace JintPlugins.TestPlugin
 {
     public class TestPlugin : IPlugin
     {
-        public void Test()
+        public string Test(string p)
         {
-            Console.WriteLine("TestPlugin1");
+            Console.WriteLine("TestPlugin: {0}", p);
+
+            return p + ", Added by TestPlugin";
         }
     }
 }

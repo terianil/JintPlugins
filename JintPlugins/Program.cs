@@ -45,9 +45,7 @@ namespace JintPlugins {
             engine.Execute(@"
                 function hello() {
 
-                TestPlugin.Test();
-
-                return 'dsadsa';
+                return TestPlugin.Test('dsadsa');
                 };
             ");
 
