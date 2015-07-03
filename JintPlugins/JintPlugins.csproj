@@ -44,6 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JintExtensions.cs" />
+    <Compile Include="JintPlugins.cs" />
+    <Compile Include="JintPluginsWatcher.cs" />
+    <Compile Include="PluginsAssembliesStore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
