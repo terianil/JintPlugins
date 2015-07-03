@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JintPlugins", "JintPlugins\JintPlugins.csproj", "{300376F7-FF10-44FF-9283-7CF2723C0628}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JintPlugins.Common", "JintPlugins.Common\JintPlugins.Common.csproj", "{A9108C50-D761-4713-8918-0BAE6AACA165}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JintPlugins.TestPlugin", "JintPlugins.TestPlugin\JintPlugins.TestPlugin.csproj", "{FBDD5DF9-5632-4D48-B2D6-6A0963582E1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{300376F7-FF10-44FF-9283-7CF2723C0628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{300376F7-FF10-44FF-9283-7CF2723C0628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{300376F7-FF10-44FF-9283-7CF2723C0628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{300376F7-FF10-44FF-9283-7CF2723C0628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9108C50-D761-4713-8918-0BAE6AACA165}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9108C50-D761-4713-8918-0BAE6AACA165}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9108C50-D761-4713-8918-0BAE6AACA165}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9108C50-D761-4713-8918-0BAE6AACA165}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBDD5DF9-5632-4D48-B2D6-6A0963582E1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBDD5DF9-5632-4D48-B2D6-6A0963582E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBDD5DF9-5632-4D48-B2D6-6A0963582E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBDD5DF9-5632-4D48-B2D6-6A0963582E1D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
