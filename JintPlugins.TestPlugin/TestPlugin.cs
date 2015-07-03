@@ -10,17 +10,11 @@ namespace JintPlugins.TestPlugin
 {
     public class TestPlugin : IPlugin
     {
-        public void Test()
+        public string Test(string p)
         {
-            Console.WriteLine("TestPlugin3");
-            //var trace = new StackTrace();
+            Console.WriteLine("TestPlugin: {0}", p);
 
-            //foreach (var frame in trace.GetFrames())
-            //{
-            //    Console.WriteLine("{0} as {1}", frame.GetMethod(), frame.GetFileName());
-            //}
-
-            throw new Exception("dupa");
+            return p + ", Added by TestPlugin";
         }
     }
 }

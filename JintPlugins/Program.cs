@@ -12,17 +12,19 @@ using System.Threading.Tasks;
 using Jint;
 using JintPlugins.Common;
 
-namespace JintPlugins {
+namespace JintPlugins
+{
     class Program
     {
-        private static readonly string PluginPath = Path.Combine(Path.GetDirectoryName(typeof (Program).Assembly.Location), "..", "..", "..", "JintPlugins.TestPlugin", "bin", "Debug");// @"C:\Users\kmaciejczek\documents\visual studio 2013\Projects\JintPlugins\JintPlugins.TestPlugin\bin\Debug\";
+        private static readonly string PluginPath = Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "..", "..", "..", "JintPlugins.TestPlugin", "bin", "Debug");// @"C:\Users\kmaciejczek\documents\visual studio 2013\Projects\JintPlugins\JintPlugins.TestPlugin\bin\Debug\";
         private static ConcurrentDictionary<string, Assembly> assemblies = new ConcurrentDictionary<string, Assembly>();
 
-        static void Main(string[] args) {
+        static void Main(string[] args)
+        {
 
             var trace = new StackTrace();
 
-        
+
             //toAppStart
             StartUpPlugins();
             RegisterWatcher();
@@ -39,7 +41,7 @@ namespace JintPlugins {
             var plugins = LoadPlugins().Cast<IPlugin>();
 
             var engine = new Engine();
-            
+
             engine.SetValue("log", new Action<object>(Console.WriteLine));
 
             var plugObject = plugins.ToDictionary(x => x.GetType().Name, x => x);
@@ -54,9 +56,7 @@ namespace JintPlugins {
             engine.Execute(@"
                 function hello() {
 
-                ais.TestPlugin.Test();
-
-                return 'dsadsa';
+                return ais.TestPlugin.Test('dsadsa');
                 };
             ");
 
@@ -96,10 +96,10 @@ namespace JintPlugins {
 
         private static FileSystemWatcher RegisterWatcher()
         {
-            var watcher = new FileSystemWatcher(PluginPath, "*.dll"){ EnableRaisingEvents = true };
+            var watcher = new FileSystemWatcher(PluginPath, "*.dll") { EnableRaisingEvents = true };
 
             watcher.Created += PluginCreatedOrChanged;
-            watcher.Changed += PluginCreatedOrChanged;  
+            watcher.Changed += PluginCreatedOrChanged;
             watcher.Deleted += PluginDeleted;
 
             return watcher;
@@ -114,7 +114,7 @@ namespace JintPlugins {
         private static void PluginCreatedOrChanged(object sender, FileSystemEventArgs e)
         {
             Thread.Sleep(1000);
-            var a =LoadPluginAssembly(e.FullPath);
+            var a = LoadPluginAssembly(e.FullPath);
             assemblies.AddOrUpdate(e.FullPath, a, (s, assembly) => a);
         }
 
