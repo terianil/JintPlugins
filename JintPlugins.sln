@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JintPlugins", "JintPlugins\JintPlugins.csproj", "{300376F7-FF10-44FF-9283-7CF2723C0628}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FBDD5DF9-5632-4D48-B2D6-6A0963582E1D} = {FBDD5DF9-5632-4D48-B2D6-6A0963582E1D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JintPlugins.Common", "JintPlugins.Common\JintPlugins.Common.csproj", "{A9108C50-D761-4713-8918-0BAE6AACA165}"
 EndProject
