@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -10,9 +8,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Jint;
-using JintPlugins.Common;
+using JintPlugins;
 
-namespace JintPlugins
+namespace Sample
 {
     class Program
     {
@@ -21,7 +19,7 @@ namespace JintPlugins
         static void Main(string[] args)
         {
             //toAppStart
-            var plugins = new JintPlugins();
+            var plugins = new JintPluginsStore();
             plugins.StartUpPlugins(PluginPath);
 
             while (true)
@@ -31,10 +29,10 @@ namespace JintPlugins
             }
         }
 
-        private static void Transform(JintPlugins plugins)
+        private static void Transform(JintPluginsStore plugins)
         {
             var engine = new Engine();
-            engine.UsePlugins("ais", plugins);   
+            engine.UsePlugins("ais", plugins);
 
             engine.Execute(@"
                 function hello() {

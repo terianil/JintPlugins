@@ -14,9 +14,9 @@ namespace JintPlugins
 {
     public static class JintExtensions
     {
-        public static void UsePlugins(this Engine engine, string pluginsNamespace, JintPlugins plugins)
+        public static void UsePlugins(this Engine engine, string pluginsNamespace, JintPluginsStore pluginsStore)
         {
-            var instances = LoadPluginsInstances(plugins.PluginsAssembliesStore).Cast<IPlugin>();
+            var instances = LoadPluginsInstances(pluginsStore.PluginsAssembliesStore).Cast<IPlugin>();
             var plugObject = instances.ToDictionary(x => x.GetType().Name, x => x);
 
             engine.SetValue(pluginsNamespace, plugObject);

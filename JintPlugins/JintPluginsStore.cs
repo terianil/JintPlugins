@@ -2,13 +2,13 @@
 using System.IO;
 
 namespace JintPlugins {
-    public class JintPlugins
+    public class JintPluginsStore
     {
         private IDictionary<string, JintPluginsWatcher> pluginsWatchers;
 
         public PluginsAssembliesStore PluginsAssembliesStore { get; private set; }
 
-        public JintPlugins()
+        public JintPluginsStore()
         {
             this.PluginsAssembliesStore = new PluginsAssembliesStore();
             this.pluginsWatchers = new Dictionary<string, JintPluginsWatcher>();
