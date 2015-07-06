@@ -12,7 +12,7 @@ namespace JintPlugins.TestPlugin
     {
         public string Test(string p)
         {
-            Console.WriteLine("TestPlugin: {0}", p);
+            Console.WriteLine("TestPlugin2: {0}", p);
 
             return p + ", Added by TestPlugin";
         }

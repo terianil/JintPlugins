@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace JintPlugins {
     internal class JintPluginsWatcher {
-        internal JintPluginsWatcher(string pluginPath) {
+        private readonly PluginsAssembliesStore store;
+
+        internal JintPluginsWatcher(string pluginPath, PluginsAssembliesStore store) {
+            this.store = store;
             var watcher = new FileSystemWatcher(pluginPath, "*.dll") { EnableRaisingEvents = true };
 
             watcher.Created += PluginCreatedOrChanged;
@@ -17,12 +20,12 @@ namespace JintPlugins {
         }
 
         private void PluginDeleted(object sender, FileSystemEventArgs e) {
-            PluginsAssembliesStore.Remove(e.FullPath);
+            this.store.Remove(e.FullPath);
         }
 
         private void PluginCreatedOrChanged(object sender, FileSystemEventArgs e) {
             Thread.Sleep(1000);
-            PluginsAssembliesStore.AddOrUpdate(e.FullPath);
+            this.store.AddOrUpdate(e.FullPath);
         }
     }
 }

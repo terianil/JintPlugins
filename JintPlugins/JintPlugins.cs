@@ -1,28 +1,29 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using JintPlugins.Common;
 
 namespace JintPlugins {
-    public class JintPlugins {
-        private JintPluginsWatcher PluginsWatcher { get; set; }
+    public class JintPlugins
+    {
+        private IDictionary<string, JintPluginsWatcher> pluginsWatchers;
 
-        public void StartUpPlugins(string pluginPath) {
+        public PluginsAssembliesStore PluginsAssembliesStore { get; private set; }
+
+        public JintPlugins()
+        {
+            this.PluginsAssembliesStore = new PluginsAssembliesStore();
+            this.pluginsWatchers = new Dictionary<string, JintPluginsWatcher>();
+        }
+
+        public void StartUpPlugins(string pluginPath) {            
             this.LoadExistingPlugins(pluginPath);
-            this.PluginsWatcher = new JintPluginsWatcher(pluginPath);
+            this.pluginsWatchers[pluginPath] = new JintPluginsWatcher(pluginPath, this.PluginsAssembliesStore);
         }
 
         private void LoadExistingPlugins(string pluginPath) {
             var plugins = Directory.GetFiles(pluginPath, "*.dll");
 
             foreach (var plugin in plugins) {
-                PluginsAssembliesStore.AddOrUpdate(plugin);
+                this.PluginsAssembliesStore.AddOrUpdate(plugin);
             }
         }
     }

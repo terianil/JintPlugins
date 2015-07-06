@@ -10,19 +10,21 @@ using System.Threading.Tasks;
 using Jint;
 using JintPlugins.Common;
 
-namespace JintPlugins {
-    public static class JintExtensions {
-        public static void UsePlugins(this Engine engine, string pluginsNamespace)
+namespace JintPlugins
+{
+    public static class JintExtensions
+    {
+        public static void UsePlugins(this Engine engine, string pluginsNamespace, JintPlugins plugins)
         {
-            var plugins = LoadPluginsInstances().Cast<IPlugin>();
-            var plugObject = plugins.ToDictionary(x => x.GetType().Name, x => x);
+            var instances = LoadPluginsInstances(plugins.PluginsAssembliesStore).Cast<IPlugin>();
+            var plugObject = instances.ToDictionary(x => x.GetType().Name, x => x);
 
             engine.SetValue(pluginsNamespace, plugObject);
         }
 
-        private static IEnumerable<object> LoadPluginsInstances()
+        private static IEnumerable<object> LoadPluginsInstances(PluginsAssembliesStore assembliesStore)
         {
-            return PluginsAssembliesStore.Assemblies.Select(assembly => assembly.Value
+            return assembliesStore.Assemblies.Select(assembly => assembly.Value
                 .GetTypes()
                 .Where(p => typeof(IPlugin).IsAssignableFrom(p))).SelectMany(plugins => plugins.Select(Activator.CreateInstance));
         }

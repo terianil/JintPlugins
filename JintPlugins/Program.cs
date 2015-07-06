@@ -26,15 +26,15 @@ namespace JintPlugins
 
             while (true)
             {
-                Transform();
+                Transform(plugins);
                 Thread.Sleep(1000);
             }
         }
 
-        private static void Transform()
+        private static void Transform(JintPlugins plugins)
         {
             var engine = new Engine();
-            engine.UsePlugins("ais");   
+            engine.UsePlugins("ais", plugins);   
 
             engine.Execute(@"
                 function hello() {

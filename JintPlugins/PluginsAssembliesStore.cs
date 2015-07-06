@@ -8,21 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace JintPlugins {
-    internal static class PluginsAssembliesStore {
-        internal static readonly ConcurrentDictionary<string, Assembly> Assemblies = new ConcurrentDictionary<string, Assembly>();
+    public class PluginsAssembliesStore {
+        public readonly ConcurrentDictionary<string, Assembly> Assemblies = new ConcurrentDictionary<string, Assembly>();
 
-        public static void AddOrUpdate(string path)
+        public void AddOrUpdate(string path)
         {
             var a = LoadPluginAssembly(path);
-            Assemblies.AddOrUpdate(path, a, (s, assembly) => a);
+            this.Assemblies.AddOrUpdate(path, a, (s, assembly) => a);
         }
 
-        public static void Remove(string assemblyPath) {
+        public void Remove(string assemblyPath) {
             Assembly deleted;
-            Assemblies.TryRemove(assemblyPath, out deleted);
+            this.Assemblies.TryRemove(assemblyPath, out deleted);
         }
 
-        private static Assembly LoadPluginAssembly(string path) {
+        private Assembly LoadPluginAssembly(string path) {
             var pdbPath = Path.ChangeExtension(path, ".pdb");
 
             if (!File.Exists(pdbPath)) {
